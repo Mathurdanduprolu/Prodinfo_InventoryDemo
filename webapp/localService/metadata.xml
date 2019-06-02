@@ -1,0 +1,120 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="Z_PRODUCT_STOCK_ODATA_SRV" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="Materails" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ersda" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Created On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ernam" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Created by" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Laeda" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Last Change" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Aenam" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Changed by" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vpsta" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Complete status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pstat" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Maint. status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lvorm" Type="Edm.Boolean" Nullable="false" sap:label="DF client level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mtart" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Material type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mbrsh" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Industry sector" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matkl" Type="Edm.String" Nullable="false" MaxLength="9" sap:label="Material Group" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bismt" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Old matl number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Meins" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <NavigationProperty Name="MaterialToStock" Relationship="Z_PRODUCT_STOCK_ODATA_SRV.GetStock_details" FromRole="FromRole_GetStock_details" ToRole="ToRole_GetStock_details"/>
+                <NavigationProperty Name="MaterialToActualStock" Relationship="Z_PRODUCT_STOCK_ODATA_SRV.get_actual_Stock" FromRole="FromRole_get_actual_Stock" ToRole="ToRole_get_actual_Stock"/>
+            </EntityType>
+            <EntityType Name="Stock_Details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pstat" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Maint. status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lvorm" Type="Edm.Boolean" Nullable="false" sap:label="DF plant level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bwtty" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Valuation Cat." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Xchar" Type="Edm.Boolean" Nullable="false" sap:label="Batches" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mmsta" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="P-S matl status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Maabc" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="ABC Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Kzkri" Type="Edm.Boolean" Nullable="false" sap:label="Critical Part" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ekgrp" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Purch. Group" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ausme" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Unit of issue" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Dispr" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="MRP profile" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dismm" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="MRP Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dispo" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="MRP controller" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Kzdie" Type="Edm.Boolean" Nullable="false" sap:label="MRPCtrllr=buyer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plifz" Type="Edm.Decimal" Nullable="false" Precision="3" Scale="0" sap:label="Pl. Deliv. Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Webaz" Type="Edm.Decimal" Nullable="false" Precision="3" Scale="0" sap:label="GR proc. time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Perkz" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Period Ind." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ausss" Type="Edm.Decimal" Nullable="false" Precision="5" Scale="2" sap:label="Assembly scrap" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Disls" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Lot Sizing Procedure" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Beskz" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Procurement" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sobsl" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="SpecProcurement" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Minbe" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Reorder Point" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Eisbe" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Safety stock" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bstmi" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Min. Lot Size" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bstma" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Max. Lot Size" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bstfe" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Fixed lot size" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bstrf" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Rounding value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mabst" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Max.stock level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Losfx" Type="Edm.Decimal" Nullable="false" Precision="12" Scale="3" sap:label="LSI Costs" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ladgr" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Loading Group" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Actual_stock" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lgort" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Stor. location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pstat" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Maint. status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lvorm" Type="Edm.Boolean" Nullable="false" sap:label="DF stor.loc.lvl" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lfmon" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Current period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sperr" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Phys. Inv. Blk" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Labst" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Unrestricted" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="get_actual_Stock" sap:content-version="1">
+                <End Type="Z_PRODUCT_STOCK_ODATA_SRV.Materails" Multiplicity="1" Role="FromRole_get_actual_Stock"/>
+                <End Type="Z_PRODUCT_STOCK_ODATA_SRV.Actual_stock" Multiplicity="*" Role="ToRole_get_actual_Stock"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_get_actual_Stock">
+                        <PropertyRef Name="Matnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_get_actual_Stock">
+                        <PropertyRef Name="Matnr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="GetStock_details" sap:content-version="1">
+                <End Type="Z_PRODUCT_STOCK_ODATA_SRV.Materails" Multiplicity="1" Role="FromRole_GetStock_details"/>
+                <End Type="Z_PRODUCT_STOCK_ODATA_SRV.Stock_Details" Multiplicity="*" Role="ToRole_GetStock_details"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_GetStock_details">
+                        <PropertyRef Name="Matnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_GetStock_details">
+                        <PropertyRef Name="Matnr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="Z_PRODUCT_STOCK_ODATA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="MaterailsSet" EntityType="Z_PRODUCT_STOCK_ODATA_SRV.Materails" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Stock_DetailsSet" EntityType="Z_PRODUCT_STOCK_ODATA_SRV.Stock_Details" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Actual_stockSet" EntityType="Z_PRODUCT_STOCK_ODATA_SRV.Actual_stock" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="GetStock_detailsSet" Association="Z_PRODUCT_STOCK_ODATA_SRV.GetStock_details" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="MaterailsSet" Role="FromRole_GetStock_details"/>
+                    <End EntitySet="Stock_DetailsSet" Role="ToRole_GetStock_details"/>
+                </AssociationSet>
+                <AssociationSet Name="get_actual_StockSet" Association="Z_PRODUCT_STOCK_ODATA_SRV.get_actual_Stock" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="MaterailsSet" Role="FromRole_get_actual_Stock"/>
+                    <End EntitySet="Actual_stockSet" Role="ToRole_get_actual_Stock"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/Z_PRODUCT_STOCK_ODATA_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/Z_PRODUCT_STOCK_ODATA_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>
